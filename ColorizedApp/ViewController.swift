@@ -9,7 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet var mailScreen: UIView!
+    
+    @IBOutlet var screen: UIView!
     @IBOutlet var firstColor: UILabel!
     @IBOutlet var firstColorData: UILabel!
     @IBOutlet var secondColor: UILabel!
@@ -36,8 +37,10 @@ class ViewController: UIViewController {
 
 
     @IBAction func slidersActions() {
-        firstColorData.text = "\(firstColorSlider.value)"
-        mailScreen.backgroundColor = UIColor(red: CGFloat(firstColorSlider.value), green: CGFloat(secondColorSlider.value), blue: CGFloat(thirdColorSlider.value), alpha: 1)
+        firstColorData.text = "\(firstColorSlider.value.rounded())"
+        secondColorData.text = "\(secondColorSlider.value.rounded())"
+        thirdColorData.text = "\(thirdColorSlider.value.rounded())"
+        changeColor()
     }
     
     private func setupFirstColorData () {
@@ -68,6 +71,10 @@ class ViewController: UIViewController {
         thirdColorSlider.value = 0
         thirdColorSlider.minimumValue = 0
         thirdColorSlider.maximumValue = 100
+    }
+    
+    private func changeColor () {
+        screen.backgroundColor = UIColor(red: CGFloat(firstColorSlider.value), green: CGFloat(secondColorSlider.value), blue: CGFloat(thirdColorSlider.value), alpha: 1)
     }
 }
 
